@@ -71,6 +71,7 @@ type Root {
   latitude: Float
   longitude: Float
   temperature_unit: String
+  windspeed_unit: String
   timezone: String
   timezone_abbreviation: String
   utc_offset_seconds: Int
@@ -85,5 +86,6 @@ type Query {
     longitude: String
     temperature_unit: String
     timezone: String
+    windspeed_unit: String
   ): Root @rest(endpoint: "https://api.open-meteo.com/v1/forecast")
 }

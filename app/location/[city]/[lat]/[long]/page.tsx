@@ -23,6 +23,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
       latitude: lat,
       timezone: "PST",
       temperature_unit: "fahrenheit",
+      windspeed_unit: "ms",
     },
   });
 
@@ -75,7 +76,9 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
             <div className="flex space-x-3">
               <StatCard
                 title="Wind Speed"
-                metric={`${results.current_weather.windspeed.toFixed(1)}m/s`}
+                metric={`${(
+                  results.current_weather.windspeed * 2.23694
+                ).toFixed(1)}mph`}
                 color="cyan"
               />
 
