@@ -1,5 +1,3 @@
-"use client";
-
 import { getClient } from "@/apollo-client";
 import CalloutCard from "@/components/CalloutCard";
 import StatCard from "@/components/StatCard";
