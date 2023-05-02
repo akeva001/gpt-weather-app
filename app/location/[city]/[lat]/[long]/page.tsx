@@ -33,12 +33,12 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
   return (
     <div>
       <div>
-        <div className="pb-5">
+        <div className="p-5">
           <div className="pb-5">
             <h2 className="text-xl font-bold">Todays Overview</h2>
             <p className="text-sm text-gray-400">
               Last Updated at:{" "}
-              {new Date(results.current_weather.time).toLocaleString()}(
+              {new Date(results.current_weather.time).toLocaleString()} (
               {results.timezone})
             </p>
           </div>
@@ -68,7 +68,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
               />
               {Number(results.daily.uv_index_max[0].toFixed(1)) > 5 && (
                 <CalloutCard
-                  message={"The UV is high today, be sure to war sun screen!0"}
+                  message={"The UV is high today, be sure to war sun screen!"}
                   warning
                 />
               )}
@@ -88,6 +88,14 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
               />
             </div>
           </div>
+        </div>
+
+        <hr className="mb-5" />
+
+        <div className="space-y-3">
+          {/* TempChart */}
+          {/* RainChart */}
+          {/* HumidityChart */}
         </div>
       </div>
     </div>
