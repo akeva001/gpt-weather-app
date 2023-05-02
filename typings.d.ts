@@ -7,7 +7,7 @@ interface CurrentWeather {
   windspeed: number;
 }
 
-interface DailyUnits {
+interface Daily {
   apparent_temperature_max: [number];
   apparent_temperature_min: [number];
   sunrise: [string];

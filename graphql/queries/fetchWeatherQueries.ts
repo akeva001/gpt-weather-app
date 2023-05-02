@@ -8,6 +8,7 @@ const fetchWeatherQuery = gql`
     $latitude: String!
     $longitude: String!
     $timezone: String!
+    $temperature_unit: String
   ) {
     myQuery(
       current_weather: $current_weather
@@ -16,6 +17,7 @@ const fetchWeatherQuery = gql`
       latitude: $latitude
       longitude: $longitude
       timezone: $timezone
+      temperature_unit: $temperature_unit
     ) {
       elevation
       generationtime_ms
@@ -24,6 +26,7 @@ const fetchWeatherQuery = gql`
       timezone_abbreviation
       utc_offset_seconds
       timezone
+      temperature_unit
       current_weather {
         is_day
         temperature
