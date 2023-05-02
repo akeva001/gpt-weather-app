@@ -5,6 +5,7 @@ import { Country, City, State } from "country-state-city";
 import { useRouter } from "next/navigation";
 import Select from "react-select";
 import { GlobeIcon } from "@heroicons/react/solid";
+import { Text } from "@tremor/react";
 
 type option = {
   value: {
@@ -15,18 +16,18 @@ type option = {
   label: string;
 } | null;
 
-type cityOption = {
+type stateOption = {
   value: {
     latitude: string;
     longitude: string;
     countryCode: string;
     name: string;
-    stateCode: string;
+    isoCode: string;
   };
   label: string;
 } | null;
 
-type stateOption = {
+type cityOption = {
   value: {
     latitude: string;
     longitude: string;
@@ -50,6 +51,8 @@ function CityPicker() {
   const [selectedCountry, setSelectedCountry] = useState<option>(null);
   const [selectedCity, setSelectedCity] = useState<cityOption>(null);
   const [selectedState, setSelectedState] = useState<stateOption>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
   const router = useRouter();
 
   const handleSelectedCountry = (option: option) => {
@@ -57,19 +60,21 @@ function CityPicker() {
     setSelectedCity(null);
   };
 
-  const handleSelectedCity = (option: cityOption) => {
-    setSelectedCity(option);
-    router.push(
-      `/location/${option?.value.latitude}/${option?.value.longitude}`
-    );
-  };
-
   const handleSelectedState = (option: stateOption) => {
     setSelectedState(option);
     setSelectedCity(null);
   };
 
-  return (
+  const handleSelectedCity = (option: cityOption) => {
+    setSelectedCity(option);
+    router.push(
+      `/location/${option?.value.name}/${option?.value.latitude}/${option?.value.longitude}`
+    );
+  };
+
+  useEffect(() => setIsMounted(true), []);
+
+  return isMounted ? (
     <div className="space-y-4">
       <div className="space-y-2">
         <div className="flex items-center space-x-2 text-white/80">
@@ -102,7 +107,7 @@ function CityPicker() {
                 longitude: state.longitude!,
                 countryCode: state.countryCode,
                 name: state.name,
-                stateCode: state.isoCode,
+                isoCode: state.isoCode,
               },
               label: state.name,
             }))}
@@ -124,7 +129,7 @@ function CityPicker() {
               onChange={handleSelectedCity}
               options={City.getCitiesOfState(
                 selectedCountry.value.isoCode,
-                selectedState.value.stateCode
+                selectedState.value.isoCode
               )?.map((state) => ({
                 value: {
                   latitude: state.latitude!,
@@ -164,6 +169,12 @@ function CityPicker() {
           />
         </div>
       )}
+    </div>
+  ) : (
+    <div>
+      <Text className="text-white font-bold text-center">
+        Loading Countries...
+      </Text>
     </div>
   );
 }
