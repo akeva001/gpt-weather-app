@@ -34,7 +34,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
   const results: Root = data.myQuery;
 
   return (
-    <div className="flex flex-col min-h-screen md:flex-row h-screen">
+    <div className="flex flex-col min-h-screen md:flex-row md:h-screen">
       <InformationPanel city={city} results={results} long={long} lat={lat} />
       <div className="flex-1 p-5 lg:p-10 h-full overflow-y-scroll">
         <div className="p-5">
