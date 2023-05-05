@@ -78,7 +78,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
               )}
             </div>
 
-            <div className="flex space-x-3">
+            <div className="flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-3">
               <StatCard
                 title="Wind Speed"
                 metric={`${(
