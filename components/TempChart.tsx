@@ -7,11 +7,11 @@ type Props = {
 };
 
 function TempChart({ results }: Props) {
-  const hourly = results?.hourly.time.map((time) =>
-    new Date(time)
-      .toLocaleString("en-US", { hour: "numeric", hour12: false })
-      .slice(0, 24)
-  );
+  const hourly = results?.hourly.time
+    .map((time) =>
+      new Date(time).toLocaleString("en-US", { hour: "numeric", hour12: false })
+    )
+    .slice(1, 25);
 
   const data = hourly.map((hour, i) => ({
     time: Number(hour),
