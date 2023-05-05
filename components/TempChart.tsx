@@ -19,7 +19,8 @@ function TempChart({ results }: Props) {
     "Temperature (F)": results.hourly.temperature_2m[i],
   }));
 
-  const dataFormatter = (number: number) => `${number} °F`;
+  const dataFormatter = (number: number) => `${number}`;
+
   return (
     <Card>
       <Title>Temperature & UV Index</Title>
