@@ -67,11 +67,9 @@ function CityPicker() {
 
   const handleSelectedCity = (option: cityOption) => {
     setSelectedCity(option);
-    console.log("Before push");
     push(
       `/location/${option?.value.name}/${option?.value.latitude}/${option?.value.longitude}`
     );
-    console.log("After push");
   };
 
   useEffect(() => setIsMounted(true), []);
