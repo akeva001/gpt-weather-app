@@ -12,7 +12,7 @@ function Loading() {
         color="yelow"
       />
       <h1 className="text-6xl font-bold text-center mb-10 animate-pulse">
-        Loading City Weather information
+        Loading City Weather Information
       </h1>
       <h2 className="text-xl font-bold text-center mb-10 animate-pulse">
         Hold on, we are crunching the numbers and generating an AI summary of
