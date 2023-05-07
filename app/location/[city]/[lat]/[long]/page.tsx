@@ -8,6 +8,8 @@ import TempChart from "@/components/TempChart";
 import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
 import React from "react";
 
+export const revalidate = 60;
+
 type Props = {
   params: {
     city: string;
