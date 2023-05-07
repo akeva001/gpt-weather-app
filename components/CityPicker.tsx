@@ -53,7 +53,7 @@ function CityPicker() {
   const [selectedState, setSelectedState] = useState<stateOption>(null);
   const [isMounted, setIsMounted] = useState(false);
 
-  const router = useRouter();
+  const { push } = useRouter();
 
   const handleSelectedCountry = (option: option) => {
     setSelectedCountry(option);
@@ -67,7 +67,7 @@ function CityPicker() {
 
   const handleSelectedCity = (option: cityOption) => {
     setSelectedCity(option);
-    router.push(
+    push(
       `/location/${option?.value.name}/${option?.value.latitude}/${option?.value.longitude}`
     );
   };
