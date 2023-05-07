@@ -10,7 +10,7 @@ import cleanData from "@/lib/cleanData";
 import getBasePath from "@/lib/getBasePath";
 import React from "react";
 
-export const revalidate = 1440;
+export const revalidate = 700;
 
 type Props = {
   params: {
